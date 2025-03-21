@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD : postgres
+    ports:
+      - 5432:5432
+    volumes:
+          - postgres_data:/var/lib/postgresql/data # Persiste os dados do banco para evitar perda ao reiniciar
+    networks:
+      - compose-bridge
+
+  python:
+    container_name: python
+    build: .
+    depends_on:
+      - postgres
+    volumes:
+      - ./src/:/code/
+    networks:
+      - compose-bridge
+    command: python /code/main.py
+
+volumes:
+  postgres_data: # Volume para persistência dos dados do banco de dados
+networks:
+  compose-bridge: 
+    driver: bridge
