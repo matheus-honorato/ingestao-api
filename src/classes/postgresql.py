@@ -1,4 +1,5 @@
 import psycopg2
+import pandas as pd
 
 
 class Postgresql:
@@ -15,4 +16,16 @@ class Postgresql:
         self.cursor.close()
         self.conn.close()
 
-
+    def select(self, query: str):
+        try:
+            self.open_connection()
+            self.cursor.execute(query)
+            results = self.cursor.fetchall()
+            df = pd.DataFrame(results, columns=[desc[0] for desc in self.cursor.description])
+            print(df)
+            
+            # return df
+        except (Exception, psycopg2.Error) as error:
+            print("Ocorreu um erro na conexão do SQL:", error)
+        finally:
+            self.close_connection()
