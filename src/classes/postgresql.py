@@ -57,4 +57,12 @@ class Postgresql:
         finally:
             self.close_connection()
 
-
+    def create_or_delete_table(self, query: str):
+        try:
+            self.open_connection()
+            self.cursor.execute(query)
+            self.conn.commit()
+        except (Exception, psycopg2.Error) as error:
+            print("Ocorreu um erro na conexão do SQL:", error)
+        finally:
+            self.close_connection()
