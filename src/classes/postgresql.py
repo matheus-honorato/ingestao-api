@@ -63,6 +63,7 @@ class Postgresql:
             self.cursor.execute(query)
             self.conn.commit()
         except (Exception, psycopg2.Error) as error:
+            self.conn.rollback()
             print("Ocorreu um erro na conexão do SQL:", error)
         finally:
             self.close_connection()
