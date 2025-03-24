@@ -8,16 +8,15 @@ import psycopg2.extras as extras
 
 load_dotenv()
 
-db_user = os.getenv("DB_USER")
-db_password = os.getenv("DB_PASSWORD")
-db_host = os.getenv("DB_HOST") 
-db_port = os.getenv("DB_PORT")
-db_name = os.getenv("DB_NAME")
-
 
 class Postgresql:
 
-    def __init__(self, user: str, host: str, port: int, password: str, database: str):
+    def __init__(self):
+        host = os.getenv("DB_HOST") 
+        user = os.getenv("DB_USER")
+        password = os.getenv("DB_PASSWORD")
+        port = os.getenv("DB_PORT")
+        database = os.getenv("DB_NAME")
         self.__connection_string = f"host={host} port={port} dbname={database} user={user} password={password}"
 
     def open_connection(self):
