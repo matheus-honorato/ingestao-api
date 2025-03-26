@@ -26,12 +26,13 @@ class Api:
         response.raise_for_status()
         return response.json()
 
-    def get_filmes(self):
-        endpoint = "/movie/popular"
-        params = {"sort_by": "popularity.desc", "include_adult": "false", "include_video": "false", "page": 1}
-        return self.request(endpoint, extra_params=params)
+    def get_filmes_populares_tmbd(self):
+        time_window = "day" #day ou week
+        endpoint = f"/trending/movie/{time_window}" #Veja os filmes mais populares no TMDB por tendência diária.
+        return self.request(endpoint)
 
-    def get_series(self):
-        endpoint = "/tv/popular"
-        params = {"sort_by": "popularity.desc", "include_adult": "false", "include_video": "false", "page": 1}
-        return self.request(endpoint, extra_params=params)
+    def get_series_populares_tmbd(self):
+        time_window = "day" #day ou week
+        endpoint = f"/trending/tv/{time_window}" #Veja as series mais populares no TMDB por tendência diária.
+        return self.request(endpoint)
+  
