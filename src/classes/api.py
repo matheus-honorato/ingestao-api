@@ -53,7 +53,6 @@ class Api:
 
         :return: Um dicionário contendo os filmes populares.
         """
-        time_window = "day"
         endpoint = f"/trending/movie/{time_window}" 
         return self.request(endpoint)
 
