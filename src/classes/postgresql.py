@@ -108,6 +108,7 @@ class Postgresql:
             self.open_connection()
             self.cursor.execute(query)
             self.conn.commit()
+            logging.info("Query create/delete executada com sucesso")
         except psycopg2.ProgrammingError as e:
             self.conn.rollback()
             raise logging.error(f"Erro de sintaxe na query: {str(e)}")
