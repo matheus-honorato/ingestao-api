@@ -21,7 +21,7 @@ Para garantir um ambiente de execução isolado e padronizado, a infraestrutura 
 
   
 
-![Diagrama de Arquitetura](img/arquitetura.jpg)
+![Diagrama de Arquitetura](img/arquitetura.png)
 
   
 
