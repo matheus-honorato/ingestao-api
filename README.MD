@@ -75,7 +75,7 @@ Siga os passos abaixo para executar este projeto:
 
 3. Vamos executar o docker compose pra começar o fluxo da coleta de dados.
 
-- Utilize o seguinte comando para isso: `docker compose up -d`
+	- Utilize o seguinte comando para isso: `docker compose up -d`
 4. Você pode visualizar os logs na pasta do projeto pra verificar se o pipeline de dados executou corretamente.
 	- Os logs são gerados pela biblioteca logging.
 	- Os logs são salvos dentro do arquivo logs_pipeline.log (há um exemplo no repositório)
